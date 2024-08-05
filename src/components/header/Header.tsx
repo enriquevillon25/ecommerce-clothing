@@ -3,26 +3,21 @@ import {
   Box,
   Button,
   IconButton,
-  MenuItem,
   Toolbar,
   Typography,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
-import { AccountCircle } from "@mui/icons-material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useState } from "react";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import { useDrawerContext } from "../../contexts/DrawerContext/DrawerCartContext";
 export const Header = () => {
   const navItems = [
-    { name: "Products", url: "/products" },
-    { name: "About", url: "/about" },
-    { name: "Contact", url: "/contact" },
+    { name: "Inicio", url: "/home" },
+    { name: "Tienda", url: "/tienda" },
   ];
   const navigate = useNavigate();
   const { openDrawer } = useDrawerContext();
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Toolbar className="header-container">
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Aura Bonita
@@ -46,7 +41,7 @@ export const Header = () => {
           color="inherit"
           onClick={openDrawer}
         >
-          <ShoppingCartIcon />
+          <ShoppingBagIcon />
         </IconButton>
       </Toolbar>
     </AppBar>

@@ -10,6 +10,7 @@ import { Profile } from "./pages/profile/Profile";
 import { Suspense } from "react";
 import { Layout } from "./pages/layout/Layout";
 import { DrawerCartProvider } from "./contexts/DrawerContext/DrawerCartContext";
+import { Products } from "./pages/products/Products";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/shopping-cart" element={<ShoppingCart />}></Route>
                 <Route path="/contact" element={<Contact />}></Route>
-                <Route path="/about" element={<About />}></Route>
+                <Route path="/tienda" element={<Products />}></Route>
                 <Route path="/profile" element={<Profile />}></Route>
                 <Route path="*" element={<Navigate to="/" />}></Route>
               </Route>
