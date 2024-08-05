@@ -1,6 +1,10 @@
 import React from "react";
 import "./Home.scss";
-import { Header } from "../../components/header/Header";
+import ImageHome from "../../assets/images/image-home.jpg";
 export const Home = () => {
-  return <div className="container">Home</div>;
+  return (
+    <div className="container">
+      <img src={ImageHome} alt="image-home" style={{ width: "100%" }} />
+    </div>
+  );
 };
