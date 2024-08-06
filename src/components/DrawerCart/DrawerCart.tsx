@@ -1,10 +1,12 @@
 import { Box, Drawer, Typography } from "@mui/material";
+import { IProductCart } from "../../interfaces/ProductCart";
 
 interface IDrawerCart {
   open: boolean;
   onClose: () => void;
+  productsCart: IProductCart[];
 }
-export const DrawerCart = ({ open, onClose }: IDrawerCart) => {
+export const DrawerCart = ({ open, onClose, productsCart }: IDrawerCart) => {
   return (
     <Drawer
       open={open}
@@ -36,7 +38,13 @@ export const DrawerCart = ({ open, onClose }: IDrawerCart) => {
             background: "red",
           }}
         >
-          <img src="" alt="" />
+          {productsCart.map((productCart: IProductCart) => (
+            <>
+              <Box>
+                <img src={productCart.image} alt="" />
+              </Box>
+            </>
+          ))}
         </Box>
       </Box>
     </Drawer>

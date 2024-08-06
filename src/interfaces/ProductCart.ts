@@ -4,4 +4,5 @@ export interface IProductCart {
   amount: number;
   price: number;
   totalPrice: number;
+  image: string;
 }
