@@ -16,6 +16,10 @@ export const theme = createTheme({
       fontFamily: "Cormorant Garamond",
       fontSize: 18,
     },
+    h2: {
+      fontSize: "26px",
+      lineHeight: "1.5em",
+    },
     h3: {
       fontSize: "16px",
       lineHeight: "1.5em",

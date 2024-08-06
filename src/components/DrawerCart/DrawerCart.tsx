@@ -1,6 +1,5 @@
 import { Box, Drawer, Typography } from "@mui/material";
 
-
 interface IDrawerCart {
   open: boolean;
   onClose: () => void;
@@ -34,25 +33,10 @@ export const DrawerCart = ({ open, onClose }: IDrawerCart) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            height: "100%",
+            background: "red",
           }}
-          role="presentation"
-          onClick={() => {}}
         >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-            }}
-          ></Box>
-          <Typography
-            variant="h5"
-            textAlign={"center"}
-            sx={{ marginBottom: "20px" }}
-          >
-            100
-          </Typography>
+          <img src="" alt="" />
         </Box>
       </Box>
     </Drawer>

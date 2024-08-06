@@ -4,7 +4,7 @@ import { IProduct } from "../interfaces/Product";
 
 export const data: any = [
   {
-    id: 1,
+    idProduct: 1,
     name: "Mazo Pink para principiantes",
     price: 48.9,
     image: MazoPink,
@@ -12,7 +12,7 @@ export const data: any = [
     information: "",
   },
   {
-    id: 2,
+    idProduct: 2,
     name: "Collar The Stars Ojo Turco",
     price: 59.9,
     image: CollarStar,
@@ -20,7 +20,7 @@ export const data: any = [
     information: "",
   },
   {
-    id: 3,
+    idProduct: 3,
     name: "Mazo Pink para principiantes",
     price: 48.9,
     image: MazoPink,
@@ -28,7 +28,7 @@ export const data: any = [
     information: "",
   },
   {
-    id: 4,
+    idProduct: 4,
     name: "Collar The Stars Ojo Turco",
     price: 59.9,
     image: CollarStar,
@@ -36,7 +36,7 @@ export const data: any = [
     information: "",
   },
   {
-    id: 5,
+    idProduct: 5,
     name: "Mazo Pink para principiantes",
     price: 48.9,
     image: MazoPink,
@@ -44,7 +44,7 @@ export const data: any = [
     information: "",
   },
   {
-    id: 6,
+    idProduct: 6,
     name: "Collar The Stars Ojo Turco",
     price: 59.9,
     image: CollarStar,

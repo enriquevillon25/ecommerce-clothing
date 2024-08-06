@@ -78,11 +78,11 @@ export const Products = () => {
         >
           {products.map((product: IProduct) => (
             <ProductCard
-              key={product.id}
+              key={product.idProduct}
               image={product.image}
               name={product.name}
               price={product.price}
-              onClick={() => navigate(`/detail/${product.id}`)}
+              onClick={() => navigate(`/detail/${product.idProduct}`)}
             />
           ))}
         </Box>
