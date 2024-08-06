@@ -1,15 +1,10 @@
 @font-face {
   font-family: "Futura light";
-  src: url("../assets/fonts/FuturaLight.ttf") format("truetype");
+  src: url("../assets/fonts/FuturaLightBt.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: "Futura light";
-  src: url("../assets/fonts/FuturaLight.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
+
 @font-face {
   font-family: "Cormorant Garamond";
   src: url("../assets/fonts/CormorantGaramond-Regular.ttf") format("truetype");

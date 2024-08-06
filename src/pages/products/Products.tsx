@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { data } from "../../data/Data";
 import { IProduct } from "../../interfaces/Product";
 import { ProductCard } from "../../components/productCard/ProductCard";
+import { useNavigate } from "react-router-dom";
 
 export const Products = () => {
   function valuetext(value: number) {
@@ -12,22 +13,20 @@ export const Products = () => {
     setValue(newValue as number[]);
   };
 
-  const maxPrice = Math.floor(
-    data.reduce(
-      (max: any, current: any) => (current.price > max ? current.price : max),
-      0
-    )
+  const maxPrice = data.reduce(
+    (max: any, current: any) => (current.price > max ? current.price : max),
+    0
   );
-  const minPrice = Math.floor(
-    data.reduce(
-      (min: any, current: any) => (current.price < min ? current.price : min),
-      data[0].price
-    )
+  const minPrice = data.reduce(
+    (min: any, current: any) => (current.price < min ? current.price : min),
+    data[0].price
   );
 
   const [value, setValue] = useState([minPrice, maxPrice]);
 
   const [products, setProducts] = useState<IProduct[]>(data);
+
+  const navigate = useNavigate();
 
   return (
     <div style={{ display: "flex" }}>
@@ -39,16 +38,15 @@ export const Products = () => {
           onChange={handleChange}
           valueLabelDisplay="auto"
           marks={[
-            { value: minPrice, label: `${minPrice}` },
+            { value: minPrice, label: `S/.${minPrice}` },
             {
               value: maxPrice,
-              label: `${maxPrice}`,
+              label: `S/.${maxPrice}`,
             },
           ]}
           min={minPrice}
           max={maxPrice}
           sx={{
-            // Ajusta este valor para cambiar el grosor del slider
             "& .MuiSlider-thumb": {
               height: 12,
               width: 12,
@@ -64,7 +62,7 @@ export const Products = () => {
       </Box>
       <Box>
         <Typography>Todos los productos</Typography>
-        <Typography>
+        <Typography variant="h3">
           Esta es la descripción de tu categoría. Es un excelente lugar para
           conectarte con tu audiencia y contarles más a tus clientes sobre esta
           categoría y sus productos.
@@ -84,6 +82,7 @@ export const Products = () => {
               image={product.image}
               name={product.name}
               price={product.price}
+              onClick={() => navigate(`/detail/${product.id}`)}
             />
           ))}
         </Box>
