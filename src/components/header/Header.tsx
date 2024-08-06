@@ -17,9 +17,9 @@ export const Header = () => {
   const navigate = useNavigate();
   const { openDrawer } = useDrawerContext();
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" color="secondary">
       <Toolbar className="header-container">
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="caption" component="div" sx={{ flexGrow: 1 }}>
           Aura Bonita
         </Typography>
         <Box sx={{ display: { xs: "none", sm: "block" } }}>
@@ -29,7 +29,7 @@ export const Header = () => {
               sx={{ color: "rgb(45, 52, 51)" }}
               onClick={() => navigate(item.url)}
             >
-              {item.name}
+              <Typography>{item.name}</Typography>
             </Button>
           ))}
         </Box>

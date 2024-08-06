@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+// import "../style/fonts.css";
 
 export const theme = createTheme({
   palette: {
@@ -6,7 +7,14 @@ export const theme = createTheme({
       main: "#000",
     },
     secondary: {
-      main: "#f4d03f",
+      main: "rgb(237, 234, 231)",
+    },
+  },
+  typography: {
+    fontFamily: "Futura Light, Arial, sans-serif",
+    caption: {
+      fontFamily: "Cormorant Garamond",
+      fontSize: 18,
     },
   },
 });
