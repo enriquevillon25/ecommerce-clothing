@@ -9,6 +9,7 @@ interface IDrawerContext {
   openDrawer: () => void;
   addCartOpen: (product: IProduct, quantity: number) => void;
   productsCart: IProductCart[];
+  subTotalPrice: number;
 }
 
 const DrawerContext = createContext<IDrawerContext>({
@@ -17,11 +18,12 @@ const DrawerContext = createContext<IDrawerContext>({
   openDrawer: () => {},
   addCartOpen: () => {},
   productsCart: [],
+  subTotalPrice: 0,
 });
 
 export const DrawerCartProvider = ({ children }: any) => {
   const [show, setShow] = useState<boolean>(false);
-  const { addCart, productsCart } = useShoppingCart();
+  const { addCart, productsCart, totalPay } = useShoppingCart();
   const closeDrawer = () => {
     setShow(false);
   };
@@ -35,7 +37,14 @@ export const DrawerCartProvider = ({ children }: any) => {
   };
   return (
     <DrawerContext.Provider
-      value={{ show, closeDrawer, openDrawer, addCartOpen, productsCart }}
+      value={{
+        show,
+        closeDrawer,
+        openDrawer,
+        addCartOpen,
+        productsCart,
+        subTotalPrice: totalPay(),
+      }}
     >
       {children}
     </DrawerContext.Provider>

@@ -4,16 +4,23 @@ import { Outlet } from "react-router-dom";
 import { DrawerCart } from "../../components/DrawerCart/DrawerCart";
 import { useDrawerContext } from "../../contexts/DrawerContext/DrawerCartContext";
 import { Box } from "@mui/material";
+import { Footer } from "../../components/footer/Footer";
 
 export const Layout = ({ children }: any) => {
-  const { show, closeDrawer } = useDrawerContext();
+  const { show, closeDrawer, productsCart, subTotalPrice } = useDrawerContext();
   return (
     <Box sx={{ background: "#DCE7EB" }}>
       <Header />
       <Box sx={{ height: "90vh" }}>
         <Outlet></Outlet>
       </Box>
-      <DrawerCart open={show} onClose={closeDrawer} />
+      <DrawerCart
+        open={show}
+        onClose={closeDrawer}
+        productsCart={productsCart}
+        subtotalPrice={subTotalPrice}
+      />
+      <Footer />
     </Box>
   );
 };

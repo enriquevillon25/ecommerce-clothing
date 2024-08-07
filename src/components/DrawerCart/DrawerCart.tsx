@@ -5,8 +5,14 @@ interface IDrawerCart {
   open: boolean;
   onClose: () => void;
   productsCart: IProductCart[];
+  subtotalPrice: number;
 }
-export const DrawerCart = ({ open, onClose, productsCart }: IDrawerCart) => {
+export const DrawerCart = ({
+  open,
+  onClose,
+  productsCart,
+  subtotalPrice,
+}: IDrawerCart) => {
   return (
     <Drawer
       open={open}
@@ -30,21 +36,26 @@ export const DrawerCart = ({ open, onClose, productsCart }: IDrawerCart) => {
         </Box>
         <Box
           sx={{
-            width: 400,
             margin: "10px 40px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            background: "red",
           }}
         >
           {productsCart.map((productCart: IProductCart) => (
-            <>
+            <Box key={productCart.id} sx={{ display: "flex" }}>
+              <img src={productCart.image} alt="" style={{ width: "30%" }} />
               <Box>
-                <img src={productCart.image} alt="" />
+                <Typography> {productCart.name}</Typography>
+                <Typography> {productCart.price}</Typography>
+                <Typography> {productCart.amount}</Typography>
               </Box>
-            </>
+            </Box>
           ))}
+        </Box>
+        <Box>
+          <Typography> Subtotal</Typography>
+          <Typography> {subtotalPrice} </Typography>
         </Box>
       </Box>
     </Drawer>

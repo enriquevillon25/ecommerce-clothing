@@ -1,8 +1,8 @@
-export interface IProductCart {
+import { IProduct } from "./Product";
+
+export interface IProductCart extends IProduct {
   id: number;
-  idProduct: number;
-  amount: number;
   price: number;
   totalPrice: number;
-  image: string;
+  amount: number;
 }
