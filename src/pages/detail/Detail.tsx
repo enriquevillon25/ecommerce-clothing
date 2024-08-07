@@ -6,22 +6,34 @@ import { data } from "../../data/Data";
 import { useParams } from "react-router-dom";
 import { IProduct } from "../../interfaces/Product";
 import { useDrawerContext } from "../../contexts/DrawerContext/DrawerCartContext";
+import { AlertModal } from "../../components/alertModal/AlertModal";
+import { IProductCart } from "../../interfaces/ProductCart";
 
 export const Detail = () => {
-  const { addCartOpen, productsCart } = useDrawerContext();
+  const {
+    addCartOpen,
+    productsCart,
+    showModalLimit,
+    handleCloseModalLimit,
+    handleOpenModalLimit,
+  } = useDrawerContext();
   const { id } = useParams();
   const min = 1;
   const max = 2;
   const [quantity, setQuantity] = useState(min);
   const [product, setProduct] = useState<IProduct>(data[0]);
+  const [productByCart, setProductByCart] = useState<IProductCart>();
 
   const handleChange = (event: any) => {
     const value = parseInt(event.target.value, 10);
     const productCart = productsCart.find(
       (productCart) => productCart.idProduct === product.idProduct
     );
-
-    console.log("roductcart", productCart);
+    setProductByCart(productCart);
+    if (productCart?.amount === 2) {
+      setQuantity(1);
+      return;
+    }
     if (
       !isNaN(value) &&
       value >= min &&
@@ -38,15 +50,26 @@ export const Detail = () => {
     setProduct(productId);
   }, [id]);
 
+  const handleOnClicKAddProduct = () => {
+    const productCart = productsCart.find(
+      (productCart) => productCart.idProduct === product.idProduct
+    );
+    setProductByCart(productCart);
+    if (productCart?.amount === 2) {
+      handleOpenModalLimit();
+    }
+
+    if (productCart?.amount !== 2) {
+      console.log("entro", productCart);
+      addCartOpen(product, quantity);
+    }
+  };
+
   useEffect(() => {
     if (id) {
       findProduct();
     }
   }, [id, findProduct]);
-
-  useEffect(() => {
-    console.log("products cart", productsCart);
-  }, [productsCart]);
 
   return (
     <div>
@@ -76,12 +99,13 @@ export const Detail = () => {
               variant="outlined"
               style={{ width: "60px", margin: "0 10px", background: "white" }}
             />
-            <button onClick={() => addCartOpen(product, quantity)}>
+            <button onClick={handleOnClicKAddProduct}>
               Agregar al carrito
             </button>
           </div>
         </div>
       </div>
+      <AlertModal open={showModalLimit} handleClose={handleCloseModalLimit} />
     </div>
   );
 };

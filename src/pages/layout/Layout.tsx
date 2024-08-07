@@ -9,9 +9,9 @@ import { Footer } from "../../components/footer/Footer";
 export const Layout = ({ children }: any) => {
   const { show, closeDrawer, productsCart, subTotalPrice } = useDrawerContext();
   return (
-    <Box sx={{ background: "#DCE7EB" }}>
+    <Box sx={{ background: "#DCE7EB", height: "100vh" }}>
       <Header />
-      <Box sx={{ height: "90vh" }}>
+      <Box sx={{ minHeight: "100%" }}>
         <Outlet></Outlet>
       </Box>
       <DrawerCart

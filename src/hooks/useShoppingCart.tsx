@@ -6,6 +6,7 @@ export const useShoppingCart = () => {
   const maxAmountProduct = 2;
 
   const [productsCart, setProductsCart] = useState<IProductCart[]>([]);
+  const [showModalLimit, setShowModalLimit] = useState<boolean>(false);
 
   const addCart = (product: IProduct, quantity: number) => {
     const productCart = productsCart.find((productCart) => {
@@ -23,7 +24,10 @@ export const useShoppingCart = () => {
       return;
     }
 
-    if (productCart?.amount === maxAmountProduct) return;
+    if (productCart?.amount === maxAmountProduct) {
+      setShowModalLimit(true);
+      return;
+    }
 
     const newProductsCart = productsCart.map((productCart: IProductCart) => {
       return productCart.idProduct === product.idProduct
@@ -44,9 +48,23 @@ export const useShoppingCart = () => {
     }, 0);
   }, [productsCart]);
 
+  const handleCloseModalLimit = () => {
+    setShowModalLimit(false);
+  };
+  const handleOpenModalLimit = () => {
+    setShowModalLimit(true);
+  };
+
   useEffect(() => {
     totalPay();
   }, [productsCart, totalPay]);
 
-  return { productsCart, addCart, totalPay };
+  return {
+    productsCart,
+    addCart,
+    totalPay,
+    showModalLimit,
+    handleCloseModalLimit,
+    handleOpenModalLimit,
+  };
 };

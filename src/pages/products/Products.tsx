@@ -6,13 +6,6 @@ import { ProductCard } from "../../components/productCard/ProductCard";
 import { useNavigate } from "react-router-dom";
 
 export const Products = () => {
-  function valuetext(value: number) {
-    return `${value}°C`;
-  }
-  const handleChange = (event: Event, newValue: number | number[]) => {
-    setValue(newValue as number[]);
-  };
-
   const maxPrice = data.reduce(
     (max: any, current: any) => (current.price > max ? current.price : max),
     0
@@ -21,16 +14,22 @@ export const Products = () => {
     (min: any, current: any) => (current.price < min ? current.price : min),
     data[0].price
   );
-
   const [value, setValue] = useState([minPrice, maxPrice]);
+  function valuetext(value: number) {
+    return `${value}°C`;
+  }
+  const handleChange = (event: Event, newValue: number | number[]) => {
+    setValue(newValue as number[]);
+  };
 
   const [products, setProducts] = useState<IProduct[]>(data);
 
   const navigate = useNavigate();
 
   return (
-    <div style={{ display: "flex" }}>
-      <Box sx={{ width: "10%", padding: "20px" }}>
+    <div style={{ display: "flex", height: "100%" }}>
+      <Box sx={{ width: "12%", padding: "40px" }}>
+        <hr />
         <Typography> Precio</Typography>
         <Slider
           getAriaLabel={() => "Price Range"}
@@ -38,10 +37,10 @@ export const Products = () => {
           onChange={handleChange}
           valueLabelDisplay="auto"
           marks={[
-            { value: minPrice, label: `S/.${minPrice}` },
+            { value: minPrice, label: `S/.${value[0]}` },
             {
               value: maxPrice,
-              label: `S/.${maxPrice}`,
+              label: `S/.${value[1]}`,
             },
           ]}
           min={minPrice}
@@ -59,6 +58,7 @@ export const Products = () => {
             },
           }}
         />
+        <hr />
       </Box>
       <Box>
         <Typography>Todos los productos</Typography>
@@ -67,13 +67,16 @@ export const Products = () => {
           conectarte con tu audiencia y contarles más a tus clientes sobre esta
           categoría y sus productos.
         </Typography>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography>{products.length} productos </Typography>
+          <Typography>Ordenar por: Lo más nuevo </Typography>
+        </Box>
         <Box
           sx={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
             gridAutoRows: "200px",
             gap: 2,
-            padding: 2,
           }}
         >
           {products.map((product: IProduct) => (

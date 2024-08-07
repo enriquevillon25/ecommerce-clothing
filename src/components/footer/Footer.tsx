@@ -3,7 +3,14 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "20px 6%",
+        height: "10%",
+      }}
+    >
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <Box>Síguenos en Instagram:</Box>
         <Box>@AuraBonita_</Box>

@@ -5,7 +5,7 @@ interface IProductCard {
   image: string;
   name: string;
   price: number;
-  onClick:()=>void
+  onClick: () => void;
 }
 export const ProductCard = ({ image, name, price, onClick }: IProductCard) => {
   return (
@@ -16,7 +16,7 @@ export const ProductCard = ({ image, name, price, onClick }: IProductCard) => {
         style={{ height: "80%", width: "100%", objectFit: "cover" }}
       />
       <Typography>{name}</Typography>
-      <Typography>{price}</Typography>
+      <Typography>{`S/.${price.toFixed(2)}`}</Typography>
     </div>
   );
 };

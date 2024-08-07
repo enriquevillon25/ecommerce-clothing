@@ -30,7 +30,7 @@ export const data: any = [
   {
     idProduct: 4,
     name: "Collar The Stars Ojo Turco",
-    price: 59.9,
+    price: 65.16,
     image: CollarStar,
     description: "",
     information: "",
@@ -38,7 +38,7 @@ export const data: any = [
   {
     idProduct: 5,
     name: "Mazo Pink para principiantes",
-    price: 48.9,
+    price: 50.9,
     image: MazoPink,
     description: "",
     information: "",
@@ -46,7 +46,7 @@ export const data: any = [
   {
     idProduct: 6,
     name: "Collar The Stars Ojo Turco",
-    price: 59.9,
+    price: 29.9,
     image: CollarStar,
     description: "",
     information: "",

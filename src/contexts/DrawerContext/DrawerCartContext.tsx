@@ -10,6 +10,9 @@ interface IDrawerContext {
   addCartOpen: (product: IProduct, quantity: number) => void;
   productsCart: IProductCart[];
   subTotalPrice: number;
+  showModalLimit: boolean;
+  handleCloseModalLimit: () => void;
+  handleOpenModalLimit: () => void;
 }
 
 const DrawerContext = createContext<IDrawerContext>({
@@ -19,11 +22,21 @@ const DrawerContext = createContext<IDrawerContext>({
   addCartOpen: () => {},
   productsCart: [],
   subTotalPrice: 0,
+  showModalLimit: false,
+  handleCloseModalLimit: () => {},
+  handleOpenModalLimit: () => {},
 });
 
 export const DrawerCartProvider = ({ children }: any) => {
   const [show, setShow] = useState<boolean>(false);
-  const { addCart, productsCart, totalPay } = useShoppingCart();
+  const {
+    addCart,
+    productsCart,
+    totalPay,
+    showModalLimit,
+    handleCloseModalLimit,
+    handleOpenModalLimit,
+  } = useShoppingCart();
   const closeDrawer = () => {
     setShow(false);
   };
@@ -44,6 +57,9 @@ export const DrawerCartProvider = ({ children }: any) => {
         addCartOpen,
         productsCart,
         subTotalPrice: totalPay(),
+        showModalLimit,
+        handleCloseModalLimit,
+        handleOpenModalLimit,
       }}
     >
       {children}
