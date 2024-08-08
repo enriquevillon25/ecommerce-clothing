@@ -54,13 +54,11 @@ export const Detail = () => {
     const productCart = productsCart.find(
       (productCart) => productCart.idProduct === product.idProduct
     );
-    setProductByCart(productCart);
     if (productCart?.amount === 2) {
       handleOpenModalLimit();
     }
 
     if (productCart?.amount !== 2) {
-      console.log("entro", productCart);
       addCartOpen(product, quantity);
     }
   };
